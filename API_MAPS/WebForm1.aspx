@@ -7,45 +7,23 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-   <title>Simple Map</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+   
+      <title>Simple Map</title>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-      <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjbObhIbKpyD570j3oFo229hpqrjFRj0I&callback=initMap&v=weekly"
-      defer
-    ></script>
+        <script
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjbObhIbKpyD570j3oFo229hpqrjFRj0I&callback=initMap&v=weekly"
+             defer
+        ></script>
 
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./index.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+        <script type="module" src="./index.js"></script>
   </head>
+
   <body>
     
-    <div id="map"></div>
-
-    <!-- 
-      The `defer` attribute causes the callback to execute after the full HTML
-      document has been parsed. For non-blocking uses, avoiding race conditions,
-      and consistent behavior across browsers, consider loading using Promises
-      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
-      -->
-    
-      
-      <script>
-          var map;
-          function initMap() {
-              map = new google.maps.Map(document.getElementById("map"), {
-                  zoom: 4,
-                  center:{ lat: -25.363, lng: 131.044 }
-
-              });
-
-              var market = new google.maps.Marker({
-                  position: { lat: - 25.363, lng: 131.044 },
-                  map: map,
-                  title: "Hello World!",
-              });
-          }
-      </script>
+     
+   
 
 <!--barra de navegacion -->
 
@@ -173,6 +151,23 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+    <script>
+          var map;
+          function initMap() {
+              map = new google.maps.Map(document.getElementById("map"), {
+                  zoom: 4,
+                  center:{ lat: -25.363, lng: 131.044 }
+
+              });
+
+              var market = new google.maps.Marker({
+                  position: { lat: - 25.363, lng: 131.044 },
+                  map: map,
+                  title: "Hello World!",
+              });
+          }
+    </script>
 
    
   </body>
