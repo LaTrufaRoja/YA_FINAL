@@ -4,20 +4,31 @@
 
 <html>
   <head>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <h2>Google API</h2>
    
-      <title>Simple Map</title>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      
 
-        <script
-         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjbObhIbKpyD570j3oFo229hpqrjFRj0I&callback=initMap&v=weekly"
-             defer
-        ></script>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfxPD7VdQYeMQCOL5BhBjKSLZSdbvwRCM&callback=initMap"
+        async defer></script>
 
         <link rel="stylesheet" type="text/css" href="./style.css" />
         <script type="module" src="./index.js"></script>
+
+      <style>
+          #map{ 
+              height: 100%;
+          }
+
+          html, body{
+              height:100%;
+              margin: 0;
+              padding: 0;
+          }
+          </style>
+
   </head>
 
   <body>
@@ -67,6 +78,37 @@
 <!-- cajas -->
 <div class="row" style="background:#000000; padding:10px">
 
+
+    <form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+</form>
 
   <div class="col-sm-3 mb-3 mb-sm-0">
     <div class="card">
@@ -152,22 +194,72 @@
   </button>
 </div>
 
-    <script>
+ <!--Inicio Mapa-->
+      <div id = "map"></div>
+      
+
+      <script>
           var map;
+
+          
+          var labels = "ABCDEFGHIJKLMNÑOPKRSTUVWXYZ";
+          let labelIndex = 0;
+
           function initMap() {
-              map = new google.maps.Map(document.getElementById("map"), {
-                  zoom: 4,
-                  center:{ lat: -25.363, lng: 131.044 }
+              var lat = 22.145283;
+              var long = -101.01518;
+
+              coordenadas = {
+                  lng: long,
+                  lati: lat,
+              };
+
+              generarMapa(coordenadas);
+          }
+
+          function generarMapa(coordenadas) {
+
+              map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 13,
+                  center: new google.maps.LatiLong(coordenadas.lat, cooordenadas.long),
 
               });
 
               var market = new google.maps.Marker({
-                  position: { lat: - 25.363, lng: 131.044 },
+                  position: new google.maps.LatiLong(coordenadas.lat, cooordenadas.long),
                   map: map,
-                  title: "Hello World!",
+                  title: "Zona Univ",
               });
+
+              var InfoWindow = new google.maps.InfoWindow({
+                  content: "<p> Coordenadaas" + marker.getPosition() + "</p>"
+              });
+
+              google.maps.event.addListener(map, "click", (event) => {
+                  (addMarker(event.latLng, map);
+              });
+
+              addMarker(bangalore, map)
+
           }
-    </script>
+
+          function addMarker(location, map) {
+              new google.map.Marker({
+                  position: location,
+                  label: labels[labelIndex++ % labels.length]
+                  map: map,
+              })
+          }
+
+          window.initMap = initMap;
+
+      </script>
+      <!--Fin Mapa-->
+      
+      <Footer style="background-color:#808080;">
+        <p>Terminos de uso</p>
+        <p>Derechos reservados</p>
+       </Footer>
 
    
   </body>
