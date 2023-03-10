@@ -235,20 +235,24 @@
                   content: "<p> Coordenadaas" + marker.getPosition() + "</p>"
               });
 
+              //Evento para tomar coordenadas al arrastrar
+              marker.addListener('dragend', function (event) {
+                  document.getElementById("latitud").value = this.getPosition().lat();
+                  document.getElementById("longitud").value = this.getPosition().lng();
+              })
+
               google.maps.event.addListener(map, "click", (event) => {
-                  (addMarker(event.latLng, map);
+                  addMarker(event.latLng, map);
               });
-
-              addMarker(bangalore, map)
-
+              addMarker(bangalore, map);
           }
 
           function addMarker(location, map) {
-              new google.map.Marker({
+              new google.maps.Marker({
                   position: location,
-                  label: labels[labelIndex++ % labels.length]
+                  label: labels[labelIndex++ % labels.length],
                   map: map,
-              })
+              });
           }
 
           window.initMap = initMap;
