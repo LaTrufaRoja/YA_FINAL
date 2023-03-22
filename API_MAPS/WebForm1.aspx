@@ -37,7 +37,7 @@
    
 
 <!--barra de navegacion -->
-
+      <section>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -74,7 +74,7 @@
     </div>
   </div>
 </nav>
-
+          </section>
 <!-- cajas -->
      <!--inicio de codigo de contenedores-->
     
@@ -175,12 +175,12 @@
 
               map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 13,
-                  center: new google.maps.LatiLong(coordenadas.lati, coordenadas.lng),
+                  center: new google.maps.LatLng(coordenadas.lati, coordenadas.lng),
 
               });
 
               marker = new google.maps.Marker({
-                  position: new google.maps.LatiLong(coordenadas.lati, coordenadas.lng),
+                  position: new google.maps.LatLng(coordenadas.lati, coordenadas.lng),
                   draggable: true,
                   map: map,
                   title: "Zona Univ",
@@ -214,14 +214,12 @@
 
       </script>
       <!--Fin Mapa-->
-      
-      <Footer style="background-color:#808080;">
+   </body>
+
+    <Footer style="background-color:#808080;">
         <p>Terminos de uso</p>
         <p>Derechos reservados</p>
        </Footer>
-
-   
-  </body>
 </html>
 
 
