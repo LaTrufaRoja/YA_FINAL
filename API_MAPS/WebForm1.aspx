@@ -7,7 +7,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-    <h2>Google API</h2>
+    <Title>Google API</Title>
    
       
 
@@ -76,83 +76,41 @@
 </nav>
 
 <!-- cajas -->
-<div class="row" style="background:#000000; padding:10px">
+     <!--inicio de codigo de contenedores-->
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!--Caja1-->
+      <div id="caja1">
+      
+            <div class="col"style ="background:black; padding:10px">
+              <div class="card">
+               
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Latitud</label>
+                      <input type="email" class="form-control" id="latitud" aria-describedby="emailHelp">
+                      
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Longitud</label>
+                      <input type="password" class="form-control" id="Longitud">
+                    </div>
+
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
 
 
-    <form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</form>
-
-  <div class="col-sm-3 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">CAJA 1</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
 
 
-  <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">CAJA 2</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-sm-3" style="color:#ffd800">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">CAJA 3</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-3" style="color:#b6ff00">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">CAJA 4</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-</div>
+                </div>
+              </div>
+            </div>
+         <!--Fin de caja1-->
+          </div>
+        </div>
+    <!--Fin contenedores-->
 
 <!-- Carousel -->
  <div id="carouselExampleCaptions" class="carousel slide">
@@ -221,12 +179,13 @@
 
               map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 13,
-                  center: new google.maps.LatiLong(coordenadas.lat, cooordenadas.long),
+                  center: new google.maps.LatiLong(coordenadas.lati, cooordenadas.lng),
 
               });
 
-              var market = new google.maps.Marker({
-                  position: new google.maps.LatiLong(coordenadas.lat, cooordenadas.long),
+              marker = new google.maps.Marker({
+                  position: new google.maps.LatiLong(coordenadas.lati, cooordenadas.lng),
+                  draggable: true,
                   map: map,
                   title: "Zona Univ",
               });
@@ -237,7 +196,7 @@
 
               //Evento para tomar coordenadas al arrastrar
               marker.addListener('dragend', function (event) {
-                  document.getElementById("latitud").value = this.getPosition().lat();
+                  document.getElementById("latitud").value = this.getPosition().lati();
                   document.getElementById("longitud").value = this.getPosition().lng();
               })
 
