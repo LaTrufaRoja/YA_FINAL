@@ -94,17 +94,13 @@
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Longitud</label>
-                      <input type="password" class="form-control" id="Longitud">
+                      <input type="password" class="form-control" id="longitud">
                     </div>
 
                     
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
-
-
-
-
-                </div>
+                 </div>
               </div>
             </div>
          <!--Fin de caja1-->
@@ -179,12 +175,12 @@
 
               map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 13,
-                  center: new google.maps.LatiLong(coordenadas.lati, cooordenadas.lng),
+                  center: new google.maps.LatiLong(coordenadas.lati, coordenadas.lng),
 
               });
 
               marker = new google.maps.Marker({
-                  position: new google.maps.LatiLong(coordenadas.lati, cooordenadas.lng),
+                  position: new google.maps.LatiLong(coordenadas.lati, coordenadas.lng),
                   draggable: true,
                   map: map,
                   title: "Zona Univ",
